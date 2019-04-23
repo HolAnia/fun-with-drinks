@@ -1,0 +1,25 @@
+@import 'variables';
+.mainTitle {
+    color: $color-main;
+    font-family: $font-title;
+    text-align: center;
+    font-size: 50px;
+    transform: rotate(-10deg);
+    margin: 20px 0;
+}
+
+form {
+    text-align: center;
+    height: 50vh;
+    line-height: 50vh;
+    input {
+        height: 50px;
+        width: 50vw;
+    }
+    select {
+        height: 50px;
+    }
+    button {
+        height: 50px;
+    }
+}

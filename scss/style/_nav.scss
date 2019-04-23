@@ -1,0 +1,30 @@
+@import 'variables';
+nav {
+    background-color: $color-background;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    li {
+        width: 200px;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid $color-main;
+    }
+    a {
+        color: $color-main;
+        text-decoration: none;
+        font-size: 25px
+    }
+}
+
+svg {
+    path {
+        fill: $color-main;
+    }
+}
+
+.logo {
+    width: 150px;
+}

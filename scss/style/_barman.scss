@@ -1,0 +1,25 @@
+@import 'variables';
+h2 {
+    color: $color-main;
+    text-decoration: none;
+    text-align: center;
+    font-family: $font-title;
+    font-size: 36px;
+}
+
+p {
+    color: #fff;
+}
+
+.allIngredients {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+}
+
+.ingredient {
+    width: 200px;
+    height: 150px;
+    // display: flex;
+    // // flex-wrap: wrap;
+}
