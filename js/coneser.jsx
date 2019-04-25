@@ -1,14 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 import drinks from './drinks';
-import ingredients from './ingredients';
-import style from '../scss/style.scss';
 
 let randomNumber = Math.floor((Math.random() * drinks.length - 1));
-let randomDrink = drinks[randomNumber].strDrink;
 
-class GameSetConeser extends React.Component {
+export default class GameSetConeser extends React.Component {
     state = {
         ingredients: drinks[randomNumber].strIngredients.sort(),
         rightAnswer: drinks[randomNumber].strDrink,
@@ -49,7 +44,6 @@ class GameSetConeser extends React.Component {
                 }
             }
         }
-
     }
     render() {
         console.log(this.state.ingredients)
@@ -95,9 +89,3 @@ class GameSetConeser extends React.Component {
 
     }
 }
-document.addEventListener('DOMContentLoaded', function () {
-    ReactDOM.render(
-        <GameSetConeser />,
-        document.getElementById('app')
-    );
-});

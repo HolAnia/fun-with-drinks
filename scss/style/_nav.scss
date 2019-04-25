@@ -6,16 +6,28 @@ nav {
 }
 
 .menu {
+    height: 100px;
+    width: 700px;
+    ul {
+        display: flex;
+        justify-content: space-between;
+    }
     li {
         width: 200px;
         display: inline-block;
         text-align: center;
-        border: 1px solid $color-main;
+        // border: 1px solid $color-main;
     }
     a {
+        &:hover {
+            background-color: $color-main;
+            color: $color-background;
+        }
         color: $color-main;
         text-decoration: none;
-        font-size: 25px
+        font-size: 25px;
+        font-family: $font-regular;
+        line-height: 100px;
     }
 }
 
@@ -26,5 +38,19 @@ svg {
 }
 
 .logo {
-    width: 150px;
+    // width: 100px;
+    // height: 100px;
+    // background-image: url('../../img/neon-cocktails-sign-by-Vexels.png');
+    // background-position: center;
+    // background-size: cover;
+    font-size: 25px;
+    padding-top: 10px;
+    padding-left: 30px;
+    width: 300px;
+    h3 {
+        color: $color-main;
+        font-family: $font-title;
+        transform: rotate(-10deg);
+        margin-top: 15px;
+    }
 }

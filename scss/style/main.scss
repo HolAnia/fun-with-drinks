@@ -3,15 +3,12 @@
 @import 'nav';
 @import 'search';
 @import 'barman';
-body {
-    background-image: url(../../img/2260.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
+@import 'footer';
 body {
     // font-family: 'Pacifico', cursive;
+    // background-image: url('../../img/5139493db68077463014ef9382820a92.jpg');
+    // background-position: center;
+    // background-size: contain;
     background-color: $color-background;
 }
 

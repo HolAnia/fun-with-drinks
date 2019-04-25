@@ -10,7 +10,7 @@ module.exports = {
     watch: true,
     mode: 'development',
     entry: {
-        main: path.join(__dirname, 'js', 'barman.jsx'),
+        main: path.join(__dirname, 'js', 'app.jsx'),
     },
     output: {
         path: path.join(__dirname, 'dist'),

@@ -5,14 +5,29 @@
     text-align: center;
     font-size: 50px;
     transform: rotate(-10deg);
-    margin: 20px 0;
+    margin-top: 15px;
+    padding-top: 50px;
+}
+
+.search {
+    background-image: url(../../img/5139493db68077463014ef9382820a92.jpg);
+    background-position: center;
+    background-size: contain;
 }
 
 form {
     text-align: center;
-    height: 50vh;
-    line-height: 50vh;
+    height: 20vh;
+    line-height: 20vh;
+    label {
+        font-family: $font-regular;
+        display: block;
+        color: $color-main;
+        // height: 20px;
+        // padding-top: 50px;
+    }
     input {
+        margin-left: 15px;
         height: 50px;
         width: 50vw;
     }
@@ -22,4 +37,72 @@ form {
     button {
         height: 50px;
     }
+}
+
+.search {
+    padding-top: 55px;
+    .logo {
+        width: 250px;
+        height: 250px;
+        background-image: url('../../img/neon-cocktails-sign-by-Vexels.png');
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+    }
+}
+
+.drinksResult {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .drink {
+        border: 2px solid #fff;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: $color-background;
+        width: 450px;
+        margin: 20px 20px;
+        h3 {
+            font-family: $font-regular;
+            color: $color-main;
+            font-size: 20px;
+            margin-bottom: 10px;
+            span {
+                font-size: 12px;
+            }
+        }
+        .fotoIng {
+            display: flex;
+            justify-content: space-between;
+            height: 200px;
+        }
+        img {
+            width: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        ul {
+            span {
+                color: $color-logo;
+                margin-bottom: 10px;
+                width: 160px
+            }
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            li {
+                list-style: none;
+            }
+        }
+        span {
+            color: $color-logo;
+        }
+        p {
+            margin-top: 10px;
+        }
+    }
+}
+
+.empty {
+    height: 20vh;
 }

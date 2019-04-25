@@ -1,27 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-import drinks from './drinks';
-import ingredients from './ingredients';
-import style from '../scss/style/main.scss';
 
 const Drink = (props) => {
     return (
         <div className='drink'>
-            <h3>{props.title}</h3>
-            <img src={props.picture} alt={props.title} />
-            <ul>
-                {props.ingredients.map((e, id) => {
-                    if (e.length > 0) { return <li key={id}>{e}</li> }
-                })}
-            </ul>
-            <p>{props.description}</p>
-            <p>{props.alcohol}</p>
+            <h3>{props.title} <span>({props.alcohol})</span></h3>
+            <div className="fotoIng">
+                <img src={props.picture} alt={props.title} />
+                <ul>
+                    <span>Ingredients:</span>
+                    {props.ingredients.map((e, id) => {
+                        if (e.length > 0) { return <li key={id}>{e}</li> }
+                    })}
+                </ul>
+            </div>
+            <span>Instruction:</span> <p>{props.description}</p>
+
         </div>
     )
 }
 
-class Search extends React.Component {
+export default class Search extends React.Component {
     state = {
         name: "",
         resultName: [],
@@ -99,41 +98,45 @@ class Search extends React.Component {
         })
     }
     render() {
-        console.log(this.state.resultIngredients)
-        console.log(this.state.resultIngredients.length)
+        // console.log(this.state.resultIngredients)
+        // console.log(this.state.resultIngredients.length)
+        // console.log(this.state.resultName)
+        console.log(this.state.resultName.length)
         return (
-            <div>
-                <h1 className="mainTitle">Fun with drinks</h1>
+            <div className='search'>
+                <div className="logo"></div>
+
                 <form onSubmit={this.handleSubmit} >
-                    <input type="text" value={this.state.name} onChange={this.handleChange} />
-                    <select onChange={this.handleSelectChange}>
-                        <option value=""></option>
-                        <option value="name">name</option>
-                        <option value="ingredients">ingredients</option>
-                    </select>
-                    <button type='submit'>Wyszukaj</button>
+                    <label >Find Your drink:
+                    {/* <h2>Find Your drink:</h2> */}
+                        <input type="text" value={this.state.name} onChange={this.handleChange} />
+                        <select onChange={this.handleSelectChange}>
+                            <option value=""></option>
+                            <option value="name">name</option>
+                            <option value="ingredients">ingredients</option>
+                        </select>
+                        <button type='submit'>Wyszukaj</button>
+                    </label>
                 </form>
-                <div>
-                    {(this.state.resultName.length > 0) ? this.state.resultName.map((e, id) => {
-                        console.log(e);
-                        return (
-                            <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
-                        )
-                    }) : ''}
+                <div className="drinksResult center">
                     {(this.state.resultIngredients.length > 0) ? this.state.resultIngredients.map((e, id) => {
                         console.log(e);
                         return (
                             <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
                         )
-                    }) : ''}
+                    }) : <div className="empty"></div>}
+                    {/* {console.log(this.state.resultIngredients.length)} */}
+                    {(this.state.resultName.length > 0) ? this.state.resultName.map((e, id) => {
+                        console.log(e);
+                        return (
+                            <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
+                        )
+                    }) : <div className="empty"></div>}
+
+
+
                 </div>
             </div>
         )
     }
 }
-document.addEventListener('DOMContentLoaded', function () {
-    ReactDOM.render(
-        <Search />,
-        document.getElementById('app')
-    );
-});
