@@ -1,3 +1,4 @@
+@import 'variables';
 * {
     margin: 0;
     padding: 0;
@@ -7,4 +8,9 @@
 .center {
     margin: 0 auto;
     max-width: 1000px;
+}
+
+body {
+    background-color: $color-background;
+    font-family: $font-basic;
 }

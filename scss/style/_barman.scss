@@ -1,25 +1,73 @@
 @import 'variables';
-h2 {
-    color: $color-main;
-    text-decoration: none;
-    text-align: center;
-    font-family: $font-title;
-    font-size: 36px;
+.barman {
+    background-image: url(../../img/5139493db68077463014ef9382820a92.jpg);
+    background-position: center;
+    background-size: contain;
+    h2 {
+        color: $color-logo;
+        text-decoration: none;
+        text-align: center;
+        padding-top: 15px;
+        font-family: $font-regular;
+        font-size: 30px;
+    }
+    p {
+        color: #fff;
+    }
 }
 
-p {
-    color: #fff;
+.gameBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .titleDrink {
+        background-color: $color-background;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    svg {
+        margin-top: 15px;
+        align-self: center;
+    }
+    .mainBoard {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .allIngredients {
+    margin-top: 10px;
     display: flex;
-    flex-wrap: wrap;
-    height: 300px;
+    justify-content: space-between;
+    .ingredient {
+        width: 95px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            width: 70px;
+            height: 70px;
+            align-self: center;
+        }
+        p {
+            align-self: center;
+            text-align: center;
+        }
+    }
 }
 
-.ingredient {
-    width: 200px;
-    height: 150px;
-    // display: flex;
-    // // flex-wrap: wrap;
+.checked {
+    background-color: $color-logo;
+}
+
+.green {
+    background-color: green
+}
+
+.red {
+    background-color: red
 }

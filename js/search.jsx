@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Footer from './footer.jsx';
 
 const Drink = (props) => {
     return (
@@ -25,7 +26,7 @@ export default class Search extends React.Component {
         name: "",
         resultName: [],
         resultIngredients: [],
-        select: ""
+        select: "name"
     }
     handleChange = (e) => {
         if (this.state.select === "ingredients") {
@@ -103,40 +104,42 @@ export default class Search extends React.Component {
         // console.log(this.state.resultName)
         console.log(this.state.resultName.length)
         return (
-            <div className='search'>
-                <div className="logo"></div>
+            <>
+                <div className='search'>
+                    <div className="logo"></div>
 
-                <form onSubmit={this.handleSubmit} >
-                    <label >Find Your drink:
+                    <form onSubmit={this.handleSubmit} >
+                        <label >Find Your drink:
                     {/* <h2>Find Your drink:</h2> */}
-                        <input type="text" value={this.state.name} onChange={this.handleChange} />
-                        <select onChange={this.handleSelectChange}>
-                            <option value=""></option>
-                            <option value="name">name</option>
-                            <option value="ingredients">ingredients</option>
-                        </select>
-                        <button type='submit'>Wyszukaj</button>
-                    </label>
-                </form>
-                <div className="drinksResult center">
-                    {(this.state.resultIngredients.length > 0) ? this.state.resultIngredients.map((e, id) => {
-                        console.log(e);
-                        return (
-                            <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
-                        )
-                    }) : <div className="empty"></div>}
-                    {/* {console.log(this.state.resultIngredients.length)} */}
-                    {(this.state.resultName.length > 0) ? this.state.resultName.map((e, id) => {
-                        console.log(e);
-                        return (
-                            <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
-                        )
-                    }) : <div className="empty"></div>}
+                            <input type="text" value={this.state.name} onChange={this.handleChange} />
+                            <select onChange={this.handleSelectChange}>
+                                <option value="name">name</option>
+                                <option value="ingredients">ingredients</option>
+                            </select>
+                            <button type='submit'>Wyszukaj</button>
+                        </label>
+                    </form>
+                    <div className="drinksResult center">
+                        {(this.state.resultIngredients.length > 0) ? this.state.resultIngredients.map((e, id) => {
+                            console.log(e);
+                            return (
+                                <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
+                            )
+                        }) : <div className="empty"></div>}
+                        {/* {console.log(this.state.resultIngredients.length)} */}
+                        {(this.state.resultName.length > 0) ? this.state.resultName.map((e, id) => {
+                            console.log(e);
+                            return (
+                                <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
+                            )
+                        }) : <div className="empty"></div>}
 
 
 
+                    </div>
                 </div>
-            </div>
+                <Footer />
+            </>
         )
     }
 }
