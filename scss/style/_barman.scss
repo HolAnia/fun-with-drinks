@@ -35,6 +35,14 @@
     .mainBoard {
         display: flex;
         justify-content: center;
+        align-items: center;
+        p {
+            width: 20vw;
+            font-size: 18px;
+            span {
+                color: $color-main;
+            }
+        }
     }
 }
 

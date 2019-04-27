@@ -92,7 +92,7 @@ export default class GameSetBarman extends React.Component {
                 </div>
                 <div className="mainBoard">
                 <div className="instructions">
-                <p>instrukcja</p></div>
+                <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p></div>
                 <svg width="400px" height="450px">
                     <g>
 	                    <g>
@@ -109,7 +109,7 @@ export default class GameSetBarman extends React.Component {
                     </g>
 
                 </svg>
-                <div className="score"><p>{this.state.score}/10</p></div>
+                <div className="score"><p>SCORE: {this.state.score}/10</p></div>
                 </div>
                 <button onClick={this.shakeIt}>Shake It</button>
                 </div>

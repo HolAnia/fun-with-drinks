@@ -9,9 +9,10 @@ const Drink = (props) => {
             <div className="fotoIng">
                 <img src={props.picture} alt={props.title} />
                 <ul>
+                    {console.log(props.ingredients)}
                     <span>Ingredients:</span>
                     {props.ingredients.map((e, id) => {
-                        if (e.length > 0) { return <li key={id}>{e}</li> }
+                        { return <li key={id}>{e}</li> }
                     })}
                 </ul>
             </div>
@@ -82,11 +83,13 @@ export default class Search extends React.Component {
                                     })
                                 }
 
+                                this.setState({
+                                    resultIngredients: ingredientsResult
+                                })
+
                             })
                     })
-                    this.setState({
-                        resultIngredients: ingredientsResult
-                    })
+
                 })
         }
     }
@@ -102,7 +105,8 @@ export default class Search extends React.Component {
         // console.log(this.state.resultIngredients)
         // console.log(this.state.resultIngredients.length)
         // console.log(this.state.resultName)
-        console.log(this.state.resultName.length)
+        console.log(this.state.resultName.length);
+        //console.log(this.state.resultIngredients.length, this.state.resultIngredients);
         return (
             <>
                 <div className='search'>
