@@ -40,12 +40,10 @@ export default class Search extends React.Component {
             })
         }
     }
-
     handleSubmit = (e) => {
         e.preventDefault();
         let allresults = [];
         let ingredientsResult = [];
-
         if (this.state.select === "name") {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${this.state.name}`)
                 .then(res => {
@@ -64,12 +62,10 @@ export default class Search extends React.Component {
                     })
                 })
         } else if (this.state.select === "ingredients") {
-
             axios.get(`https://www.thecocktaildb.com/api/json/v2/1/filter.php?i=${this.state.name}`)
                 .then(res => {
                     const drinksByIngredient = res.data.drinks;
                     drinksByIngredient.map((e) => {
-
                         axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${e.strDrink}`)
                             .then(res => {
                                 const drinks = res.data.drinks;
@@ -82,7 +78,6 @@ export default class Search extends React.Component {
                                         alcohol: drinks[i].strAlcoholic
                                     })
                                 }
-
                                 this.setState({
                                     resultIngredients: ingredientsResult
                                 })
@@ -102,11 +97,6 @@ export default class Search extends React.Component {
         })
     }
     render() {
-        // console.log(this.state.resultIngredients)
-        // console.log(this.state.resultIngredients.length)
-        // console.log(this.state.resultName)
-        console.log(this.state.resultName.length);
-        //console.log(this.state.resultIngredients.length, this.state.resultIngredients);
         return (
             <>
                 <div className='search'>
@@ -114,7 +104,6 @@ export default class Search extends React.Component {
 
                     <form onSubmit={this.handleSubmit} >
                         <label >Find Your drink:
-                    {/* <h2>Find Your drink:</h2> */}
                             <input type="text" value={this.state.name} onChange={this.handleChange} />
                             <select onChange={this.handleSelectChange}>
                                 <option value="name">name</option>
@@ -130,16 +119,12 @@ export default class Search extends React.Component {
                                 <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
                             )
                         }) : <div className="empty"></div>}
-                        {/* {console.log(this.state.resultIngredients.length)} */}
                         {(this.state.resultName.length > 0) ? this.state.resultName.map((e, id) => {
                             console.log(e);
                             return (
                                 <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
                             )
                         }) : <div className="empty"></div>}
-
-
-
                     </div>
                 </div>
                 <Footer />

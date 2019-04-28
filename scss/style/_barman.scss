@@ -28,20 +28,51 @@
         margin-bottom: 20px;
         padding-bottom: 20px;
     }
-    svg {
+    .svg {
+        width: 400px;
+        height: 450px;
         margin-top: 15px;
-        align-self: center;
-    }
-    .mainBoard {
+        background-image: url(../../img/shaker.svg);
+        background-repeat: no-repeat;
+        background-position: center;
         display: flex;
+        flex-direction: column-reverse;
         justify-content: center;
-        align-items: center;
-        p {
-            width: 20vw;
-            font-size: 18px;
-            span {
-                color: $color-main;
+        flex-wrap: wrap;
+        align-content: center;
+        .draggable {
+            width: 95px;
+            height: 120px;
+            align-self: center;
+            .ingredient {
+                border: none;
+                width: 80px;
+                height: 100px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+                p {
+                    font-size: 12px;
+                }
             }
+        }
+    }
+    // svg {
+    //     margin-top: 15px;
+    //     align-self: center;
+    // }
+}
+
+.mainBoard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        width: 20vw;
+        font-size: 18px;
+        span {
+            color: $color-main;
         }
     }
 }
@@ -49,22 +80,52 @@
 .allIngredients {
     margin-top: 10px;
     display: flex;
-    justify-content: space-between;
-    .ingredient {
-        width: 95px;
-        height: 120px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        img {
-            width: 70px;
-            height: 70px;
-            align-self: center;
-        }
-        p {
-            align-self: center;
-            text-align: center;
-        }
+    justify-content: space-around;
+}
+
+.ingredient {
+    width: 95px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid $color-logo;
+    border-radius: 5px;
+    img {
+        width: 70px;
+        height: 70px;
+        align-self: center;
+    }
+    p {
+        align-self: center;
+        text-align: center;
+    }
+}
+
+.score {
+    span {
+        color: $color-main;
+    }
+    p {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.scoreButton {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
+    button {
+        height: 30px;
+        width: 150px;
+        border-radius: 10px;
+        color: $color-main;
+        background-color: $color-background;
+        border: 2px solid $color-main;
+        font-weight: 700;
     }
 }
 

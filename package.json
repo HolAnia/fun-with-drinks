@@ -45,6 +45,8 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
+    "react-dnd": "^7.4.5",
+    "react-dnd-html5-backend": "^7.4.4",
     "react-twitter-share-link": "^1.2.0"
   }
 }

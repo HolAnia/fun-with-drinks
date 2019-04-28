@@ -1,0 +1,78 @@
+.coneser {
+    background-image: url(../../img/5139493db68077463014ef9382820a92.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    .logo {
+        width: 250px;
+        height: 250px;
+        background-image: url('../../img/neon-cocktails-sign-by-Vexels.png');
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .score {
+        width: 150px;
+        p {
+            color: #fff;
+        }
+        span {
+            color: $color-main;
+        }
+    }
+    .instructions {
+        width: 200px;
+    }
+}
+
+.coneserBoard {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: $color-background;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // ul {
+    //     width: 70vw;
+    // }
+    li {
+        font-family: $font-regular;
+        color: $color-logo;
+        display: inline-block;
+        list-style: none;
+        margin: 20px 30px;
+    }
+    .coneserAnswers {
+        li {
+            color: $color-main;
+            &:hover {
+                background-color: $color-main;
+                color: $color-background;
+                cursor: pointer;
+            }
+            .checked {
+                background-color: $color-main;
+                color: $color-background;
+            }
+        }
+    }
+}
+
+button {
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    color: $color-background;
+    background-color: $color-main;
+    border: 2px solid $color-background;
+    font-weight: 700;
+}

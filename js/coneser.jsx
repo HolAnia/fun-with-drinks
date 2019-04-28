@@ -8,7 +8,8 @@ export default class GameSetConeser extends React.Component {
     state = {
         ingredients: drinks[randomNumber].strIngredients.sort(),
         rightAnswer: drinks[randomNumber].strDrink,
-        answers: []
+        answers: [],
+        score: 0
     }
     handleClick = (e) => {
 
@@ -49,17 +50,32 @@ export default class GameSetConeser extends React.Component {
     render() {
         console.log(this.state.ingredients)
         return (
-            <div>
-                <ul>
-                    {this.state.ingredients.map((e, id) => {
-                        return <li key={id}>{e}</li>
-                    })}
-                </ul>
-                <ul>{this.state.answers.map((e, id) => {
-                    return <button key={id} onClick={this.handleClick}>{e}</button>
-                })}</ul>
-                <button onClick={this.tryIt}>Try It!</button>
-            </div>
+            <>
+                <div className='coneser'>
+                    <div className="header center">
+                        <div className="instructions"><p>Instrukcja</p></div>
+                        <div className="logo"></div>
+                        <div className="score"><p>SCORE: <span>{this.state.score}</span>/10</p></div>
+                    </div>
+                    <div className="coneserBoard center">
+
+                        <ul>
+                            {this.state.ingredients.map((e, id) => {
+                                return <li key={id}>{e}</li>
+                            })}
+                        </ul>
+
+                        <div className="coneserAnswers center">
+                            <ul>{this.state.answers.map((e, id) => {
+                                return <li key={id} onClick={this.handleClick}>{e}</li>
+                            })}</ul>
+                            <button onClick={this.tryIt}>Try It!</button>
+                        </div>
+                    </div>
+
+                </div>
+                <Footer />
+            </>
         )
     }
     componentDidMount() {
