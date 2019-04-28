@@ -17,6 +17,7 @@
 
 // Zdjęcia tła z <a href="https://pl.pngtree.com/freebackground/fantasy-brick-wall-background-light-effect_601241.html">pngtree.com</a>
 
+// Obraz <a href="https://pixabay.com/pl/users/Alexas_Fotos-686414/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1651325"> Alexas_Fotos</a> z <a href="https://pixabay.com/pl/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1651325"> Pixabay</a>
 
 import React from 'react';
 

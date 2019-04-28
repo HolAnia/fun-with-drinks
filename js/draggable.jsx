@@ -11,7 +11,7 @@ export default class Draggable extends React.Component {
     }
     render() {
         return (
-            <div className="draggable" id={this.props.id} draggable="true" onDragStart={this.drag} onDragOver={this.noAllowDrop} style={this.props.style}>
+            <div className="draggable" id={this.props.id} url={this.props.img} draggable="true" onDragStart={this.drag} onDragOver={this.noAllowDrop} style={this.props.style}>
                 {this.props.children}
             </div>
         )
@@ -21,4 +21,5 @@ Draggable.propTypes = {
     id: PropTypes.number,
     style: PropTypes.object,
     children: PropTypes.node,
+    url: PropTypes.string
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import drinks from './drinks';
 import Footer from './footer.jsx';
 
-let randomNumber = Math.floor((Math.random() * drinks.length - 1));
 
+let randomNumber = Math.floor((Math.random() * drinks.length - 1));
 export default class GameSetConeser extends React.Component {
     state = {
         ingredients: drinks[randomNumber].strIngredients.sort(),
@@ -19,6 +19,7 @@ export default class GameSetConeser extends React.Component {
     tryIt = () => {
         const checked = document.querySelectorAll('.checked');
         const allButtons = document.querySelectorAll('button');
+
 
         if (checked.length > 1) {
             console.log('zaznacz tylko jedną odpowiedź')
@@ -48,7 +49,6 @@ export default class GameSetConeser extends React.Component {
         }
     }
     render() {
-        console.log(this.state.ingredients)
         return (
             <>
                 <div className='coneser'>
@@ -79,10 +79,14 @@ export default class GameSetConeser extends React.Component {
         )
     }
     componentDidMount() {
+
+
+
+
+
         let allDrinks = [...drinks];
         let allAnswers = [this.state.rightAnswer];
-        console.log(allAnswers.length);
-        console.log(allDrinks);
+
         while (4 - allAnswers.length != 0) {
             let diferent = true;
             let random = Math.floor((Math.random() * allDrinks.length - 1));
@@ -98,7 +102,6 @@ export default class GameSetConeser extends React.Component {
                     return (allDrinks[random] != e);
                 })
             }
-            console.log(allAnswers);
         }
         this.setState({
             answers: allAnswers.sort()
