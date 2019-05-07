@@ -13,6 +13,7 @@
     background-image: url(../../img/5139493db68077463014ef9382820a92.jpg);
     background-position: center;
     background-size: contain;
+    // height: 70vh;
 }
 
 form {
@@ -33,10 +34,11 @@ form {
         margin-left: 15px;
         height: 50px;
         width: 30vw;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
+        border-radius: 10px;
         font-size: 20px;
         padding-left: 15px;
+        border: 2px solid black;
+        margin-right: 40px;
     }
     select {
         height: 50px;
@@ -116,4 +118,36 @@ form {
 
 .empty {
     height: 20vh;
+}
+
+.searchButton {
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+select {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    background-color: #fff;
+    border-left: 2px solid #000;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    font-weight: 700;
+}
+
+.error {
+    color: #fff;
+    background-color: $color-background;
+    width: 400px;
+    height: 60px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid white;
+    display: none;
+    margin-bottom: 35px;
 }

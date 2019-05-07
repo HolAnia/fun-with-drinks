@@ -1,15 +1,33 @@
 import React from 'react';
 import drinks from './drinks';
 import ingredients from './ingredients';
+import Draggable from './draggable.jsx';
+import Droppable from './droppable.jsx';
 import Footer from './footer.jsx';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// let randomNumber = Math.floor((Math.random() * drinks.length - 1));
+// let randomDrink = drinks[randomNumber].strDrink;
+// let randomDrinkPictureAdress = drinks[randomNumber].strDrinkThumb;
+
+class Ingredient extends React.Component {
+    render() {
+        return (
+            <div className="ingredient" onClick={this.props.handleClick}>
+                <img src={this.props.ingredientAdress} alt={this.props.ingredientTitle} />
+                <p>{this.props.ingredientTitle}</p>
+            </div>
+        )
+    }
+
+}
 const randomNumber = Math.floor((Math.random() * drinks.length - 1));
 export default class GameSetBarman extends React.Component {
     state = {
-        allNumbers: [randomNumber],
+
+        allDrinks: [],
         randomDrinkName: drinks[randomNumber].strDrink,
         rightIngredients: drinks[randomNumber].strIngredients.sort(),
         randomDrinkPictureAdress: drinks[randomNumber].strDrinkThumb,
@@ -18,39 +36,33 @@ export default class GameSetBarman extends React.Component {
         nextDrink: false,
         score: 0,
         step: 1,
-        clickedIngredients: [],
+        droppedIngredients: [],
     }
-    ///metoda na klikanie składników
-    handleClick = (e) => {
-        const ingredient = e.currentTarget;
-        this.setState({
-            allIngredients: this.state.allIngredients.filter((val) => val != ingredient.textContent),
-            clickedIngredients: [...this.state.clickedIngredients, ingredient.textContent]
-        })
-        console.log(this.state.clickedIngredients);
-    }
-    handleNextClick = (e) => {
-        this.setState({
-            allIngredients: [...this.state.allIngredients, e.currentTarget.textContent],
-            clickedIngredients: this.state.clickedIngredients.filter((val) => val != e.currentTarget.textContent)
-        })
-    }
-    ///metoda , która uruchamia się po kliknięciu w przycisk shake it
+    // handleClick = (e) => {
+    //     const newIngredient = e.cloneNode();
+    //     document.querySelector('.svg').appendChild(newIngredient);
+    //     e.style.displ
+    // }
     shakeIt = () => {
 
-        //pobieram ze stata prawidłowe skłądniki i zaczynam porównywać tablice
+        const elements = document.querySelectorAll('.svg .draggable .ingredient p');
+        let choosenIngredients = []
+        for (let i = 0; i < elements.length; i++) {
+            choosenIngredients.push(elements[i].textContent)
+        }
+        // const checked = document.querySelectorAll('.checked');
         const rightIngredients = this.state.rightIngredients;
         let rightAnswers = [];
-        //jeżeli liczba składników się zgadza
-        if (this.state.clickedIngredients.length === rightIngredients.length) {
+        if (choosenIngredients.length === rightIngredients.length) {
             for (let i = 0; i < rightIngredients.length; i++) {
-                for (let j = 0; j < this.state.clickedIngredients.length; j++) {
-                    if (rightIngredients[i] == this.state.clickedIngredients[j]) {
-                        rightAnswers.push(this.state.clickedIngredients[j]);
+                for (let j = 0; j < choosenIngredients.length; j++) {
+                    if (rightIngredients[i] == choosenIngredients[j]) {
+                        // checked[j].classList.remove('checked');
+                        // choosenIngredients[j].classList.add('green')
+                        rightAnswers.push(choosenIngredients[j]);
                     }
                 }
             }
-            //jeżeli skłdniki się zgadzają to wygrana i pojawia się zdjęcie drinka
             if (rightAnswers.length === rightIngredients.length) {
                 const picture = document.querySelector('.svg')
                 const imgDrink = document.createElement('img');
@@ -58,54 +70,41 @@ export default class GameSetBarman extends React.Component {
                 imgDrink.classList.add('imgDrink');
                 picture.appendChild(imgDrink);
                 document.querySelectorAll('.svg .draggable').forEach((e) => e.style.display = "none");
+
                 this.setState({
                     information: 'gratulacje!',
                     score: this.state.score + 1,
+
                 })
-            }
-            //jeżeli się nie zgadzają to przegrana i zniakają
-            else {
-                document.querySelector('.svg').classList.add('wrong');
+            } else {
+
+                document.querySelector('.mainBoard').classList.add('wrong');
+                document.querySelector('.mainBoard .instructions').style.display = "none";
+                document.querySelector('.mainBoard .svg').style.display = "none";
+                document.querySelector('.scoreButton .score').style.display = "none";
+                document.querySelector('.scoreButton .shakeIt').style.display = "none";
                 document.querySelectorAll('.svg .draggable').forEach((e) => e.style.display = "none");
+
                 this.setState({
                     information: 'przegrałeś!',
 
                 })
             }
             document.querySelector('.nextDrink').style.display = "block";
-
-        } else if (this.state.clickedIngredients.length < rightIngredients.length) {
+        } else if (choosenIngredients.length < rightIngredients.length) {
             this.setState({
                 information: 'za mało składników'
             })
-        } else if (this.state.clickedIngredients.length > rightIngredients.length) {
+        } else if (choosenIngredients.length > rightIngredients.length) {
             this.setState({
                 information: 'wybrałeś za dużo składników'
             })
         }
+
     }
-
-    //po kliknięciu next Drink odpala się metoda z kolejnym drinkiem 
-    nextDrink = (e) => {
-        if (this.state.information === 'gratulacje!') {
-            document.querySelector('.svg .imgDrink').remove();
-        }
-
-        let randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
-        let repeat = true;
-        while (repeat) {
-            repeat = false;
-            for (let i = 0; i < this.state.allNumbers.length; i++) {
-                if (randomNumberNext === this.state.allNumbers[i]) {
-                    console.log('powtórka');
-                    randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
-                    repeat = true;
-                }
-            }
-        }
-        console.log(randomNumberNext)
-
-
+    nextDrink = () => {
+        document.querySelector('.svg .imgDrink').style.display = 'none';
+        const randomNumberNext = Math.floor((Math.random() * drinks.length - 1));
         this.setState({
             randomDrinkName: drinks[randomNumberNext].strDrink,
             randomDrinkPictureAdress: drinks[randomNumberNext].strDrinkThumb,
@@ -113,21 +112,33 @@ export default class GameSetBarman extends React.Component {
             step: this.state.step + 1,
             information: '',
             nextDrink: true,
-            clickedIngredients: [],
-            allNumbers: [...this.state.allNumbers, randomNumberNext]
 
         })
-
-        e.currentTarget.style.display = "none";
     }
     componentDidUpdate() {
         console.log('dokonała się zmiana')
         if (this.state.nextDrink) {
             this.createIngredients();
-            document.querySelector('.svg').classList.remove('wrong');
+            document.querySelector('.mainBoard').classList.remove('wrong');
+            document.querySelector('.mainBoard .instructions').style.display = "block";
+            document.querySelector('.mainBoard .svg').style.display = "flex";
+            document.querySelector('.scoreButton .score').style.display = "block";
+            document.querySelector('.scoreButton .shakeIt').style.display = "block";
             this.setState({
                 nextDrink: false,
 
+            })
+        }
+        if (this.state.droppedIngredients.length > 0) {
+            console.log('coś tam jest');
+            this.state.droppedIngredients.forEach((e) => {
+                const newDragg = e.cloneNode(true);
+                newDragg.style.display = "flex";
+                document.querySelector('#dr1 .allIngredients').appendChild(newDragg);
+                e.remove();
+            })
+            this.setState({
+                droppedIngredients: []
             })
         }
     }
@@ -139,33 +150,19 @@ export default class GameSetBarman extends React.Component {
                         <div className="titleDrink">
                             <h2>{this.state.randomDrinkName}</h2>
                             <div><p>{this.state.information}</p></div>
-                            <div id='dr1'>
+                            <Droppable id='dr1'>
                                 <div className="allIngredients">
-                                    {this.state.allIngredients.map((e, id) => {
-                                        let adress = `https://www.thecocktaildb.com/images/ingredients/${e}-small.png`;
-                                        return (<div key={id} className="ingredient" onClick={this.handleClick}>
-                                            <img src={adress} alt={e} />
-                                            <p>{e}</p>
-                                        </div>);
-                                    })}
+                                    {this.createDraggable()}
                                 </div>
-                            </div>
+                            </Droppable>
                         </div>
                         <div className="mainBoard">
                             <div className="instructions">
                                 <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p>
                             </div>
-                            <div id='dr2'>
-                                <div className="svg">
-                                    {this.state.clickedIngredients.map((e, id) => {
-                                        let adress = `https://www.thecocktaildb.com/images/ingredients/${e}-small.png`;
-                                        return (<div key={id} className="ingredient draggable" onClick={this.handleNextClick}>
-                                            <img src={adress} alt={e} />
-                                            <p>{e}</p>
-                                        </div>);
-                                    })}
-                                </div>
-                            </div>
+                            <Droppable id='dr2'>
+                                <div className="svg"></div>
+                            </Droppable>
                             <div className="scoreButton"><div className="score"><p>SCORE: <span>{this.state.score}</span>/10</p></div>
                                 <button className='shakeIt' onClick={this.shakeIt}>Shake It</button>
                                 <button className='nextDrink' style={{ display: "none" }} onClick={this.nextDrink}>Next drink</button>
@@ -179,7 +176,7 @@ export default class GameSetBarman extends React.Component {
     createIngredients = () => {
         this.setState({
             allIngredients: [],
-            droppedIngredients: document.querySelectorAll('#dr2 .ingredient'),
+            droppedIngredients: document.querySelectorAll('#dr2 .draggable'),
 
         })
         let mainIngredients = [...ingredients];
@@ -205,14 +202,21 @@ export default class GameSetBarman extends React.Component {
         })
 
     }
+    createDraggable = () => {
+        return (this.state.allIngredients.map((e, id) => {
+            let adress = `https://www.thecocktaildb.com/images/ingredients/${e}-small.png`;
+            return <Draggable key={id} id={id} url={adress} className="draggable">
+                <Ingredient key={e.id} ingredientTitle={e} ingredientAdress={adress} handleClick={this.handleClick} />
+            </Draggable>
+        }))
+    }
     render() {
-        return (<>
-            {this.createBoard()}
-            <Footer />
-        </>
+        return (
+            this.createBoard()
         )
     }
     componentDidMount() {
         this.createIngredients();
+
     }
 }

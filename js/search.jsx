@@ -27,7 +27,8 @@ export default class Search extends React.Component {
         name: "",
         resultName: [],
         resultIngredients: [],
-        select: "name"
+        select: "name",
+        error: ''
     }
     handleChange = (e) => {
         if (this.state.select === "ingredients") {
@@ -41,6 +42,7 @@ export default class Search extends React.Component {
         }
     }
     handleSubmit = (e) => {
+        document.querySelector('.error').style.display = "none";
         e.preventDefault();
         let allresults = [];
         let ingredientsResult = [];
@@ -60,6 +62,13 @@ export default class Search extends React.Component {
                     this.setState({
                         resultName: allresults
                     })
+                })
+                .catch(error => {
+                    this.setState({
+                        error: 'niestety nie znamy drinka o takiej nazwie, spróbuj ponownie',
+                        resultName: [],
+                    })
+                    document.querySelector('.error').style.display = "block";
                 })
         } else if (this.state.select === "ingredients") {
             axios.get(`https://www.thecocktaildb.com/api/json/v2/1/filter.php?i=${this.state.name}`)
@@ -86,6 +95,13 @@ export default class Search extends React.Component {
                     })
 
                 })
+                .catch(error => {
+                    this.setState({
+                        error: 'niestety nie znamy drnika z takim składnikiem, spróbuj ponownie',
+                        resultIngredients: [],
+                    })
+                    document.querySelector('.error').style.display = "block";
+                })
         }
     }
     handleSelectChange = (e) => {
@@ -94,9 +110,12 @@ export default class Search extends React.Component {
             resultIngredients: [],
             resultName: [],
             name: '',
+            error: '',
         })
+        document.querySelector('.error').style.display = "none";
     }
     render() {
+
         return (
             <>
                 <div className='search'>
@@ -109,7 +128,7 @@ export default class Search extends React.Component {
                                 <option value="name">name</option>
                                 <option value="ingredients">ingredients</option>
                             </select>
-                            <button type='submit'>Wyszukaj</button>
+                            <button className='searchButton' type='submit'>search</button>
                         </label>
                     </form>
                     <div className="drinksResult center">
@@ -125,7 +144,9 @@ export default class Search extends React.Component {
                                 <Drink key={id} title={e.title} picture={e.picture} ingredients={e.ingredients} description={e.description} alcohol={e.alcohol} />
                             )
                         }) : <div className="empty"></div>}
+                        <div className="error center">{this.state.error}</div>
                     </div>
+
                 </div>
                 <Footer />
             </>

@@ -31,44 +31,42 @@
     #dr2 {
         margin: 0 20px;
     }
-    .svg {
-        width: 400px;
-        height: 450px;
-        margin-top: 15px;
-        background-image: url(../../img/shaker.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-content: center;
-        .draggable {
-            // &:hover {
-            //     cursor: pointer;
-            // }
-            z-index: 5;
-            width: 60px;
-            height: 80px;
-            align-self: center;
-            .ingredient {
-                border: none;
-                width: 60px;
-                height: 80px;
-                img {
-                    width: 50px;
-                    height: 50px;
-                }
-                p {
-                    display: none;
-                }
-            }
-        }
-    }
     // svg {
     //     margin-top: 15px;
     //     align-self: center;
     // }
+}
+
+.svg {
+    width: 400px;
+    height: 450px;
+    margin-top: 15px;
+    background-image: url(../../img/shaker.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    .imgDrink {
+        width: 400px;
+    }
+    .draggable.ingredient {
+        width: 60px;
+        height: 80px;
+        align-self: center;
+        border: none;
+        width: 60px;
+        height: 80px;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        p {
+            display: none;
+        }
+    }
 }
 
 .mainBoard {
@@ -147,4 +145,16 @@
 
 .red {
     background-color: red
+}
+
+.wrong {
+    background-image: url('https://cdn.pixabay.com/photo/2016/09/07/10/37/kermit-1651325_960_720.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.imgDrink {
+    border: 2px solid #fff;
+    border-radius: 10px;
 }
