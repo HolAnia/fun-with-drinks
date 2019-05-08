@@ -158,3 +158,28 @@
     border: 2px solid #fff;
     border-radius: 10px;
 }
+
+.gameOver {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+    margin: 40px auto;
+    background-color: $color-background;
+    h1 {
+        color: $color-main;
+        font-family: $font-regular;
+        margin: 20px 0;
+    }
+    p {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 15px 0;
+        span {
+            color: $color-main;
+        }
+    }
+    button {
+        margin: 20px 20px;
+    }
+}

@@ -2,11 +2,12 @@ import React from 'react';
 import drinks from './drinks';
 import ingredients from './ingredients';
 import Footer from './footer.jsx';
+import { throws } from 'assert';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const randomNumber = Math.floor((Math.random() * drinks.length - 1));
+const randomNumber = Math.floor((Math.random() * (drinks.length - 1)));
 export default class GameSetBarman extends React.Component {
     state = {
         allNumbers: [randomNumber],
@@ -19,6 +20,7 @@ export default class GameSetBarman extends React.Component {
         score: 0,
         step: 1,
         clickedIngredients: [],
+        newGame: false
     }
     ///metoda na klikanie składników
     handleClick = (e) => {
@@ -65,7 +67,12 @@ export default class GameSetBarman extends React.Component {
             }
             //jeżeli się nie zgadzają to przegrana i zniakają
             else {
-                document.querySelector('.svg').classList.add('wrong');
+                // document.querySelector('.svg').classList.add('wrong');
+                const picture = document.querySelector('.svg')
+                const imgDrink = document.createElement('img');
+                imgDrink.src = 'https://cdn.pixabay.com/photo/2016/09/07/10/37/kermit-1651325_960_720.jpg';
+                imgDrink.classList.add('imgDrink');
+                picture.appendChild(imgDrink);
                 document.querySelectorAll('.svg .draggable').forEach((e) => e.style.display = "none");
                 this.setState({
                     information: 'przegrałeś!',
@@ -73,6 +80,9 @@ export default class GameSetBarman extends React.Component {
                 })
             }
             document.querySelector('.nextDrink').style.display = "block";
+            if (this.state.step == 10) {
+                document.querySelector('.nextDrink').textContent = "The end"
+            }
 
         } else if (this.state.clickedIngredients.length < rightIngredients.length) {
             this.setState({
@@ -87,38 +97,45 @@ export default class GameSetBarman extends React.Component {
 
     //po kliknięciu next Drink odpala się metoda z kolejnym drinkiem 
     nextDrink = (e) => {
-        if (this.state.information === 'gratulacje!') {
-            document.querySelector('.svg .imgDrink').remove();
-        }
+        if (this.state.step == 10) {
+            ///koniec gry
+            console.log('game over');
+            document.querySelector('.mainBoard').style.display = "none";
+            document.querySelector('.gameOver').style.display = "block";
+        } else {
 
-        let randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
-        let repeat = true;
-        while (repeat) {
-            repeat = false;
-            for (let i = 0; i < this.state.allNumbers.length; i++) {
-                if (randomNumberNext === this.state.allNumbers[i]) {
-                    console.log('powtórka');
-                    randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
-                    repeat = true;
+            document.querySelector('.svg .imgDrink').remove();
+
+
+            let randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
+            let repeat = true;
+            while (repeat) {
+                repeat = false;
+                for (let i = 0; i < this.state.allNumbers.length; i++) {
+                    if (randomNumberNext === this.state.allNumbers[i]) {
+                        console.log('powtórka');
+                        randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
+                        repeat = true;
+                    }
                 }
             }
+            console.log(randomNumberNext)
+
+
+            this.setState({
+                randomDrinkName: drinks[randomNumberNext].strDrink,
+                randomDrinkPictureAdress: drinks[randomNumberNext].strDrinkThumb,
+                rightIngredients: drinks[randomNumberNext].strIngredients.sort(),
+                step: this.state.step + 1,
+                information: '',
+                nextDrink: true,
+                clickedIngredients: [],
+                allNumbers: [...this.state.allNumbers, randomNumberNext]
+
+            })
+
+            e.currentTarget.style.display = "none";
         }
-        console.log(randomNumberNext)
-
-
-        this.setState({
-            randomDrinkName: drinks[randomNumberNext].strDrink,
-            randomDrinkPictureAdress: drinks[randomNumberNext].strDrinkThumb,
-            rightIngredients: drinks[randomNumberNext].strIngredients.sort(),
-            step: this.state.step + 1,
-            information: '',
-            nextDrink: true,
-            clickedIngredients: [],
-            allNumbers: [...this.state.allNumbers, randomNumberNext]
-
-        })
-
-        e.currentTarget.style.display = "none";
     }
     componentDidUpdate() {
         console.log('dokonała się zmiana')
@@ -130,6 +147,39 @@ export default class GameSetBarman extends React.Component {
 
             })
         }
+        if (this.state.newGame) {
+            this.createIngredients();
+            this.createBoard();
+            document.querySelector('.gameOver').style.display = "none";
+            document.querySelector('.mainBoard').style.display = "flex";
+            this.setState({
+                newGame: false,
+            })
+            document.querySelector('.svg .imgDrink').remove();
+            document.querySelector('.nextDrink').style.display = "none";
+            document.querySelector('.nextDrink').textContent = "Next drink"
+
+
+        }
+    }
+    newGame = () => {
+        const randomNumber = Math.floor((Math.random() * (drinks.length - 1)));
+        this.setState({
+            allNumbers: [randomNumber],
+            randomDrinkName: drinks[randomNumber].strDrink,
+            rightIngredients: drinks[randomNumber].strIngredients.sort(),
+            randomDrinkPictureAdress: drinks[randomNumber].strDrinkThumb,
+            allIngredients: [],
+            information: '',
+            nextDrink: false,
+            score: 0,
+            step: 1,
+            clickedIngredients: [],
+            newGame: true,
+
+        })
+
+
     }
     createBoard = () => {
         return (
@@ -152,6 +202,7 @@ export default class GameSetBarman extends React.Component {
                             </div>
                         </div>
                         <div className="mainBoard">
+
                             <div className="instructions">
                                 <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p>
                             </div>
@@ -166,10 +217,20 @@ export default class GameSetBarman extends React.Component {
                                     })}
                                 </div>
                             </div>
-                            <div className="scoreButton"><div className="score"><p>SCORE: <span>{this.state.score}</span>/10</p></div>
+                            <div className="scoreButton">
+
+                                <div className="score">
+                                    <p>NR DRINK: <span>{this.state.step}</span></p>
+                                    <p>SCORE: <span>{this.state.score}</span>/10</p>
+                                </div>
                                 <button className='shakeIt' onClick={this.shakeIt}>Shake It</button>
                                 <button className='nextDrink' style={{ display: "none" }} onClick={this.nextDrink}>Next drink</button>
                             </div>
+                        </div>
+                        <div className="gameOver center" style={{ display: "none" }}>
+                            <h1>GAME OVER</h1>
+                            <p>Your score is <span>{this.state.score} points</span> .</p>
+                            <button onClick={this.newGame}>Try again</button>
                         </div>
                     </div>
                 </div>
