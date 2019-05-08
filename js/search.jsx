@@ -65,7 +65,7 @@ export default class Search extends React.Component {
                 })
                 .catch(error => {
                     this.setState({
-                        error: 'niestety nie znamy drinka o takiej nazwie, spróbuj ponownie',
+                        error: 'there is no drink named like that, try again',
                         resultName: [],
                     })
                     document.querySelector('.error').style.display = "block";
@@ -97,7 +97,7 @@ export default class Search extends React.Component {
                 })
                 .catch(error => {
                     this.setState({
-                        error: 'niestety nie znamy drnika z takim składnikiem, spróbuj ponownie',
+                        error: 'there is no drink with that ingredient, try again',
                         resultIngredients: [],
                     })
                     document.querySelector('.error').style.display = "block";

@@ -6,7 +6,7 @@ import {
     Switch,
     NavLink,
 } from 'react-router-dom';
-import GameSetConeser from './coneser';
+
 
 
 export default class Nav extends React.Component {

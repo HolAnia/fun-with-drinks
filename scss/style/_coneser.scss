@@ -3,7 +3,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 75vh;
     .logo {
         width: 250px;
         height: 250px;
@@ -12,16 +12,43 @@
         background-size: cover;
         margin: 0 auto;
     }
+    .gameOver {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        button {
+            width: 150px;
+            border-radius: 10px;
+            height: 30px;
+            font-weight: 700;
+            align-self: center;
+            color: $color-main;
+            border: 2px solid $color-main;
+            background-color: $color-background;
+        }
+    }
 }
 
 .header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 20vh;
+    .instructions {
+        p {
+            width: 250px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 700;
+            span {
+                color: $color-main;
+            }
+        }
+    }
     .score {
-        width: 150px;
         p {
             color: #fff;
+            margin-top: 10px;
         }
         span {
             color: $color-main;
@@ -29,50 +56,101 @@
     }
     .instructions {
         width: 200px;
+        color: #fff;
     }
 }
 
-.coneserBoard {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: $color-background;
-    border: 2px solid white;
-    border-radius: 10px;
+.coneserQuestion {
+    padding: 20px 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    // ul {
-    //     width: 70vw;
-    // }
+    justify-content: center;
+    ul {
+        display: flex;
+    }
     li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        background-color: $color-background;
+        border: 2px solid $color-logo;
+        padding: 30px;
+        border-radius: 10px;
         font-family: $font-regular;
         color: $color-logo;
-        display: inline-block;
         list-style: none;
         margin: 20px 30px;
-    }
-    .coneserAnswers {
-        li {
-            color: $color-main;
-            &:hover {
-                background-color: $color-main;
-                color: $color-background;
-                cursor: pointer;
-            }
-            .checked {
-                background-color: $color-main;
-                color: $color-background;
-            }
+        img {
+            align-self: center;
+            width: 70px;
+        }
+        p {
+            align-self: center;
+            font-size: 12px;
+            margin-top: 10px;
         }
     }
 }
 
-button {
-    height: 30px;
-    width: 150px;
-    border-radius: 10px;
-    color: $color-background;
-    background-color: $color-main;
-    border: 2px solid $color-background;
-    font-weight: 700;
+.coneserAnswers {
+    display: flex;
+    flex-direction: column;
+    .checked {
+        background-color: $color-logo;
+        color: $color-background;
+        border-color: $color-background;
+    }
+    .wrong {
+        background-color: $color-main;
+    }
+    // .good {
+    //     transform: scale(1.5);
+    // }
+    ul {
+        display: flex;
+        justify-content: space-around;
+        h2 {
+            color: $color-logo;
+            align-self: center;
+            font-family: $font-regular;
+        }
+    }
+    li {
+        list-style: none;
+        color: $color-logo;
+        font-weight: 700;
+        width: 150px;
+        border-radius: 10px;
+        border: 2px solid $color-logo;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        background-color: $color-background;
+        &:hover {
+            background-color: $color-logo;
+            color: $color-background;
+            cursor: pointer;
+        }
+        p {
+            align-self: center;
+            text-align: center;
+        }
+    }
+}
+
+.buttons {
+    margin: 30px;
+    align-self: center;
+    display: flex;
+    button {
+        height: 35px;
+        width: 150px;
+        border-radius: 10px;
+        color: $color-main;
+        background-color: $color-background;
+        border: 2px solid $color-main;
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0 15px;
+    }
 }

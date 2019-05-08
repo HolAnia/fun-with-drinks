@@ -60,8 +60,11 @@ export default class GameSetBarman extends React.Component {
                 imgDrink.classList.add('imgDrink');
                 picture.appendChild(imgDrink);
                 document.querySelectorAll('.svg .draggable').forEach((e) => e.style.display = "none");
+
+                let info = <p>Good job! Prepare <span>next</span> drink</p>
+
                 this.setState({
-                    information: 'gratulacje!',
+                    information: info,
                     score: this.state.score + 1,
                 })
             }
@@ -74,23 +77,27 @@ export default class GameSetBarman extends React.Component {
                 imgDrink.classList.add('imgDrink');
                 picture.appendChild(imgDrink);
                 document.querySelectorAll('.svg .draggable').forEach((e) => e.style.display = "none");
+                let info = <p>Upsss! Try again with <span>next</span> drink</p>
                 this.setState({
-                    information: 'przegrałeś!',
+                    information: info,
 
                 })
             }
             document.querySelector('.nextDrink').style.display = "block";
+            document.querySelector('.shakeIt').style.display = "none";
             if (this.state.step == 10) {
                 document.querySelector('.nextDrink').textContent = "The end"
             }
 
         } else if (this.state.clickedIngredients.length < rightIngredients.length) {
+            let info = <p>not enough ingredients to create <span> {this.state.randomDrinkName}</span> drink</p>
             this.setState({
-                information: 'za mało składników'
+                information: info,
             })
         } else if (this.state.clickedIngredients.length > rightIngredients.length) {
+            let info = <p>too many ingredients to create <span> {this.state.randomDrinkName}</span> drink</p>
             this.setState({
-                information: 'wybrałeś za dużo składników'
+                information: info,
             })
         }
     }
@@ -102,10 +109,11 @@ export default class GameSetBarman extends React.Component {
             console.log('game over');
             document.querySelector('.mainBoard').style.display = "none";
             document.querySelector('.gameOver').style.display = "block";
+
         } else {
 
             document.querySelector('.svg .imgDrink').remove();
-
+            document.querySelector('.shakeIt').style.display = "block";
 
             let randomNumberNext = Math.floor((Math.random() * (drinks.length - 1)));
             let repeat = true;
@@ -157,9 +165,14 @@ export default class GameSetBarman extends React.Component {
             })
             document.querySelector('.svg .imgDrink').remove();
             document.querySelector('.nextDrink').style.display = "none";
-            document.querySelector('.nextDrink').textContent = "Next drink"
-
-
+            document.querySelector('.nextDrink').textContent = "Next drink";
+            document.querySelector('.shakeIt').style.display = "block";
+        }
+        if (this.state.information === "") {
+            let info = <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p>;
+            this.setState({
+                information: info,
+            })
         }
     }
     newGame = () => {
@@ -188,7 +201,7 @@ export default class GameSetBarman extends React.Component {
                     <div className="gameBoard center">
                         <div className="titleDrink">
                             <h2>{this.state.randomDrinkName}</h2>
-                            <div><p>{this.state.information}</p></div>
+
                             <div id='dr1'>
                                 <div className="allIngredients">
                                     {this.state.allIngredients.map((e, id) => {
@@ -204,7 +217,8 @@ export default class GameSetBarman extends React.Component {
                         <div className="mainBoard">
 
                             <div className="instructions">
-                                <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p>
+                                {/* <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p> */}
+                                {this.state.information}
                             </div>
                             <div id='dr2'>
                                 <div className="svg">
@@ -220,7 +234,7 @@ export default class GameSetBarman extends React.Component {
                             <div className="scoreButton">
 
                                 <div className="score">
-                                    <p>NR DRINK: <span>{this.state.step}</span></p>
+                                    <p>DRINK NR: <span>{this.state.step}</span></p>
                                     <p>SCORE: <span>{this.state.score}</span>/10</p>
                                 </div>
                                 <button className='shakeIt' onClick={this.shakeIt}>Shake It</button>

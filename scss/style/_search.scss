@@ -126,6 +126,8 @@ form {
     border-top-right-radius: 10px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border: 2px solid #000;
+    font-weight: 700;
 }
 
 select {
@@ -139,7 +141,7 @@ select {
     font-weight: 700;
 }
 
-.error {
+.error.center {
     color: #fff;
     background-color: $color-background;
     width: 400px;
@@ -149,5 +151,4 @@ select {
     padding: 5px;
     border: 2px solid white;
     display: none;
-    margin-bottom: 35px;
 }
