@@ -115,7 +115,7 @@ export default class Search extends React.Component {
         document.querySelector('.error').style.display = "none";
     }
     render() {
-
+        const info = <p><a target="_blank" href="https://www.vexels.com/vectors/preview/144120/neon-cocktails-sign"> Neon cocktails sign </a></p>;
         return (
             <>
                 <div className='search'>
@@ -148,7 +148,7 @@ export default class Search extends React.Component {
                     </div>
 
                 </div>
-                <Footer />
+                <Footer info={info} />
             </>
         )
     }

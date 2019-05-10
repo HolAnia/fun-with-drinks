@@ -2,11 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import style from '../scss/style/main.scss'
-
 import Search from './search.jsx';
 import GameSetBarman from './barman.jsx';
 import GameSetConeser from './coneser.jsx';
-
 import {
     BrowserRouter as Router,
     Route,
@@ -14,8 +12,6 @@ import {
     Switch,
     NavLink,
 } from 'react-router-dom';
-
-
 
 class App extends React.Component {
     render() {
@@ -46,7 +42,6 @@ class App extends React.Component {
         )
     }
 }
-
 document.addEventListener('DOMContentLoaded', function () {
     ReactDOM.render(
         <App />,

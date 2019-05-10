@@ -1,0 +1,448 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.center {
+  margin: 0 auto;
+  max-width: 1000px; }
+
+body {
+  background-color: #070707;
+  font-family: "Lato", sans-serif; }
+
+nav {
+  background-color: #070707;
+  display: flex;
+  justify-content: space-between; }
+
+.menu {
+  height: 100px;
+  width: 700px; }
+  .menu ul {
+    display: flex;
+    justify-content: space-between; }
+  .menu li {
+    width: 200px;
+    display: inline-block;
+    text-align: center; }
+  .menu a {
+    color: #F19FBF;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Gugi", cursive;
+    line-height: 100px; }
+    .menu a:hover {
+      background-color: #F19FBF;
+      color: #070707; }
+
+svg path {
+  fill: #F19FBF; }
+
+.logo {
+  font-size: 25px;
+  padding-top: 10px;
+  padding-left: 30px;
+  width: 300px; }
+  .logo h3 {
+    color: #F19FBF;
+    font-family: "Pacifico", cursive;
+    transform: rotate(-10deg);
+    margin-top: 15px; }
+
+.mainTitle {
+  color: #F19FBF;
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  font-size: 50px;
+  transform: rotate(-10deg);
+  margin-top: 15px;
+  padding-top: 50px; }
+
+.search {
+  background-image: url(images/5139493db68077463014ef9382820a92.jpg);
+  background-position: center;
+  background-size: contain; }
+
+form {
+  text-align: center;
+  height: 20vh;
+  line-height: 20vh; }
+  form label {
+    font-family: "Gugi", cursive;
+    display: block;
+    color: #F19FBF; }
+  form input {
+    margin-left: 15px;
+    height: 50px;
+    width: 30vw;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 15px;
+    border: 2px solid black;
+    margin-right: 40px; }
+  form select {
+    height: 50px; }
+  form button {
+    height: 50px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: 100px; }
+
+.search {
+  padding-top: 55px; }
+  .search .logo {
+    width: 250px;
+    height: 250px;
+    background-image: url(images/neon-cocktails-sign-by-Vexels.png);
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto; }
+
+.drinksResult {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .drinksResult .drink {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #070707;
+    width: 450px;
+    margin: 20px 20px; }
+    .drinksResult .drink h3 {
+      font-family: "Gugi", cursive;
+      color: #F19FBF;
+      font-size: 20px;
+      margin-bottom: 10px; }
+      .drinksResult .drink h3 span {
+        font-size: 12px; }
+    .drinksResult .drink .fotoIng {
+      display: flex;
+      justify-content: space-between;
+      height: 200px; }
+    .drinksResult .drink img {
+      width: 200px;
+      border-radius: 10px;
+      margin-bottom: 10px; }
+    .drinksResult .drink ul {
+      color: #fff;
+      display: flex;
+      flex-direction: column; }
+      .drinksResult .drink ul span {
+        color: #9AD7F8;
+        margin-bottom: 10px;
+        width: 160px; }
+      .drinksResult .drink ul li {
+        list-style: none; }
+    .drinksResult .drink span {
+      color: #9AD7F8; }
+    .drinksResult .drink p {
+      margin-top: 10px;
+      color: #fff; }
+
+.empty {
+  height: 20vh; }
+
+.searchButton {
+  background-color: #fff;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 2px solid #000;
+  font-weight: 700; }
+
+select {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  background-color: #fff;
+  border-left: 2px solid #000;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-left: 10px;
+  font-weight: 700; }
+
+.error.center {
+  color: #fff;
+  background-color: #070707;
+  width: 400px;
+  height: 60px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+  border: 2px solid white;
+  display: none; }
+
+.coneser {
+  background-image: url(images/5139493db68077463014ef9382820a92.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 75vh; }
+  .coneser .logo {
+    width: 250px;
+    height: 250px;
+    background-image: url(images/neon-cocktails-sign-by-Vexels.png);
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto; }
+  .coneser .gameOver {
+    display: flex;
+    flex-direction: column;
+    color: #fff; }
+    .coneser .gameOver button {
+      width: 150px;
+      border-radius: 10px;
+      height: 30px;
+      font-weight: 700;
+      align-self: center;
+      color: #F19FBF;
+      border: 2px solid #F19FBF;
+      background-color: #070707; }
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh; }
+  .header .instructions p {
+    width: 250px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700; }
+    .header .instructions p span {
+      color: #F19FBF; }
+  .header .score p {
+    color: #fff;
+    margin-top: 10px; }
+  .header .score span {
+    color: #F19FBF; }
+  .header .instructions {
+    width: 200px;
+    color: #fff; }
+
+.coneserQuestion {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center; }
+  .coneserQuestion ul {
+    display: flex; }
+  .coneserQuestion li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: #070707;
+    border: 2px solid #9AD7F8;
+    padding: 30px;
+    border-radius: 10px;
+    font-family: "Gugi", cursive;
+    color: #9AD7F8;
+    list-style: none;
+    margin: 20px 30px; }
+    .coneserQuestion li img {
+      align-self: center;
+      width: 70px; }
+    .coneserQuestion li p {
+      align-self: center;
+      font-size: 12px;
+      margin-top: 10px; }
+
+.coneserAnswers {
+  display: flex;
+  flex-direction: column; }
+  .coneserAnswers .checked {
+    background-color: #9AD7F8;
+    color: #070707;
+    border-color: #070707; }
+  .coneserAnswers .wrong {
+    background-color: #F19FBF; }
+  .coneserAnswers ul {
+    display: flex;
+    justify-content: space-around; }
+    .coneserAnswers ul h2 {
+      color: #9AD7F8;
+      align-self: center;
+      font-family: "Gugi", cursive; }
+  .coneserAnswers li {
+    list-style: none;
+    color: #9AD7F8;
+    font-weight: 700;
+    width: 150px;
+    border-radius: 10px;
+    border: 2px solid #9AD7F8;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #070707; }
+    .coneserAnswers li:hover {
+      background-color: #9AD7F8;
+      color: #070707;
+      cursor: pointer; }
+    .coneserAnswers li p {
+      align-self: center;
+      text-align: center; }
+
+.buttons {
+  margin: 30px;
+  align-self: center;
+  display: flex; }
+  .buttons button {
+    height: 35px;
+    width: 150px;
+    border-radius: 10px;
+    color: #F19FBF;
+    background-color: #070707;
+    border: 2px solid #F19FBF;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 15px; }
+
+.barman {
+  background-image: url(images/5139493db68077463014ef9382820a92.jpg);
+  background-position: center;
+  background-size: contain; }
+  .barman h2 {
+    color: #9AD7F8;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 15px;
+    font-family: "Gugi", cursive;
+    font-size: 30px; }
+  .barman p {
+    color: #fff; }
+
+.gameBoard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .gameBoard .titleDrink {
+    background-color: #070707;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px; }
+  .gameBoard #dr2 {
+    margin: 0 20px; }
+
+.svg {
+  width: 400px;
+  height: 450px;
+  margin-top: 15px;
+  background-image: url(images/shaker.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center; }
+  .svg .imgDrink {
+    width: 400px; }
+  .svg .draggable.ingredient {
+    width: 60px;
+    height: 80px;
+    align-self: center;
+    border: none;
+    width: 60px;
+    height: 80px; }
+    .svg .draggable.ingredient img {
+      width: 50px;
+      height: 50px; }
+    .svg .draggable.ingredient p {
+      display: none; }
+
+.mainBoard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; }
+  .mainBoard p {
+    width: 20vw;
+    font-size: 18px; }
+    .mainBoard p span {
+      color: #F19FBF; }
+
+.allIngredients {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around; }
+
+.ingredient {
+  width: 95px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #9AD7F8;
+  border-radius: 5px; }
+  .ingredient:hover {
+    transform: scale(1.1); }
+  .ingredient img {
+    width: 70px;
+    height: 70px;
+    align-self: center; }
+  .ingredient p {
+    align-self: center;
+    text-align: center; }
+
+.score span {
+  color: #F19FBF; }
+
+.score p {
+  font-size: 24px;
+  font-weight: 700; }
+
+.scoreButton {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around; }
+  .scoreButton button {
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    color: #F19FBF;
+    background-color: #070707;
+    border: 2px solid #F19FBF;
+    font-weight: 700; }
+
+.imgDrink {
+  border: 2px solid #fff;
+  border-radius: 10px; }
+
+.gameOver {
+  border: 2px solid #fff;
+  border-radius: 10px;
+  width: 500px;
+  text-align: center;
+  margin: 40px auto;
+  background-color: #070707;
+  margin-bottom: 100px; }
+  .gameOver h1 {
+    color: #F19FBF;
+    font-family: "Gugi", cursive;
+    margin: 20px 0; }
+  .gameOver p {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 15px 0; }
+    .gameOver p span {
+      color: #F19FBF; }
+  .gameOver button {
+    margin: 20px 20px;
+    width: 150px;
+    border-radius: 10px;
+    height: 30px;
+    font-weight: 700;
+    align-self: center;
+    color: #F19FBF;
+    border: 2px solid #F19FBF;
+    background-color: #070707; }
+
+.footer {
+  height: 10vh; }
+
