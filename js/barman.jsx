@@ -2,7 +2,6 @@ import React from 'react';
 import drinks from './drinks';
 import ingredients from './ingredients';
 import Footer from './footer.jsx';
-import { throws } from 'assert';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,7 +216,6 @@ export default class GameSetBarman extends React.Component {
                         <div className="mainBoard">
 
                             <div className="instructions">
-                                {/* <p>Choose right ingredients needed to create <span>{this.state.randomDrinkName}</span> drink and put it into shaker. Next <span>shake it </span> and taste it!</p> */}
                                 {this.state.information}
                             </div>
                             <div id='dr2'>

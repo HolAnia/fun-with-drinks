@@ -2,7 +2,6 @@ import React from 'react';
 import drinks from './drinks';
 import Footer from './footer.jsx';
 
-
 let randomNumber = Math.floor((Math.random() * (drinks.length - 1)));
 export default class GameSetConeser extends React.Component {
     state = {

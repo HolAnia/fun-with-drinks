@@ -1,0 +1,48 @@
+.sorry {
+    background-image: url('../../img/5139493db68077463014ef9382820a92.jpg');
+    color: $color-main;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+        align-self: center
+    }
+    .logo {
+        width: 250px;
+        height: 250px;
+        background-image: url('../../img/neon-cocktails-sign-by-Vexels.png');
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+    }
+}
+
+.question {
+    height: 80vh;
+    background-image: url("../../img/5139493db68077463014ef9382820a92.jpg");
+    .yearQuestion {
+        width: 150px
+    }
+    button {
+        border-radius: 10px;
+        border: 2px solid $color-main;
+        background-color: $color-background;
+        color: $color-main;
+        font-weight: 700;
+        font-size: 18px;
+        width: 80px;
+        &:hover {
+            background-color: $color-main;
+            color: $color-background;
+        }
+    }
+    .logo {
+        width: 250px;
+        height: 250px;
+        background-image: url('../../img/neon-cocktails-sign-by-Vexels.png');
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+    }
+}

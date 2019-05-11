@@ -33,3 +33,41 @@ p.hol {
         text-decoration: none;
     }
 }
+
+.prohibition {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 5px solid red;
+    background-color: #fff;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    &::after {
+        content: '';
+        width: 5px;
+        height: 60px;
+        border: 5px soli red;
+        position: relative;
+    }
+}
+
+.infoProhibitions {
+    justify-content: space-between;
+    display: flex;
+}
+
+.prohibitions {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    div {
+        font-size: 8px;
+        text-align: center;
+    }
+    div:first-of-type {
+        font-size: 20px;
+    }
+}
