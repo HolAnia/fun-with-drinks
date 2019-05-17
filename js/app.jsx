@@ -38,7 +38,7 @@ class App extends React.Component {
                 return (
                     <>
                         <div className="sorry">
-                            <h1>Sorry, you are too young to discover the world of drinks...</h1>
+                            <h1>Sorry, you are too young to explore the world of drinks...</h1>
                             <div className="logo"></div>
                         </div>
                         <Footer info={info} />

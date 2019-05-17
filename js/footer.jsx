@@ -18,8 +18,8 @@ export default class Footer extends React.Component {
                         </div>
                         <div className='prohibitions'>
                             <div className="prohibition">18</div>
-                            <div className="prohibition">DRINK &amp; DRIVE</div>
-                            <div className="prohibition">PREGNANT NO DRINKING</div>
+                            <div className="prohibition">DON'T DRINK &amp; DRIVE</div>
+                            <div className="prohibition">PREGNANT? DON'T DRINK</div>
                         </div>
                     </div>
                 </div>

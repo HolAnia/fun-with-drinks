@@ -31,7 +31,7 @@ export default class Question extends React.Component {
                 <div>
                     <form className="question" onSubmit={this.handleSubmit}>
                         <label >
-                            <h1>Please enter the year of birth:</h1>
+                            <h1>Please enter the year of Your birth:</h1>
                             <input className="yearQuestion" type="number" onChange={this.handleChange} value={this.state.year} />
                             <button type='submit'>confirm</button>
                         </label>

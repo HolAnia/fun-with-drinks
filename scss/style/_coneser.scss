@@ -3,7 +3,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    // height: 75vh;
+    height: 80vh;
     .logo {
         width: 250px;
         height: 250px;
@@ -152,5 +152,9 @@
         font-weight: 700;
         font-size: 20px;
         margin: 0 15px;
+        &:hover {
+            color: $color-background;
+            background-color: $color-main;
+        }
     }
 }
