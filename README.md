@@ -1,7 +1,7 @@
 # fun-with-drinks
 
 ## General info:
-Fun with Drinks it is a party aplication, You can use it with friends during home party. First of all it is a search of drinks (by name or by ingredients). Second opiton is barman and coneser game.
+Fun with Drinks it is a party application, You can use it with friends during home party. Bassically it is a search of drinks (by name or by ingredients). Additional opitons are barman and connaisseur games.
 You can see aplication [here](https://holania.github.io/fun-with-drinks-2/).
 
 ## Techologies used:
